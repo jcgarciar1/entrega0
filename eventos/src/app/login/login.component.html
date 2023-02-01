@@ -1,13 +1,12 @@
-
 <body style="background-image: url(assets/Bg_3.jpeg)" class="fondo">
   <div class="login">
     <form [formGroup]="myform" (ngSubmit)="onSubmit()" class="form">
       <div>
-        <label for="email"> Ingrese nombre de usuario</label>
+        <label for="email"> Ingrese su Correo</label>
         <input type="text" formControlName="email" placeholder="Usuario" />
       </div>
       <div>
-        <label for="password"> Escribir contraseña</label>
+        <label for="password"> Ingrese su Contraseña</label>
         <input
           type="password"
           formControlName="password"
@@ -21,7 +20,7 @@
         <button type="submit">Iniciar Sesión</button>
       </div>
       <br />
-      <a href="login/forgot-password"> Olvide mi contraseña</a>
+      <a href="register"> Registrarse</a>
     </form>
   </div>
 </body>

@@ -62,6 +62,13 @@ export class AuthService {
     this.currentUserSubject.next(null!);
   }
 
+  register(eventData: Object) {
+    this.http
+    .post(this.api_url + 'api/register/', eventData)
+    .subscribe((data) => {
+      console.log(data);
+    });
+  }
   change_password(old_password: string, new_password: string) {
     this.http.put<any>(
       this.api_url + "api/change-password/",
