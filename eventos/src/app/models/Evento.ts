@@ -4,6 +4,6 @@ export class Evento {
   category!: string;
   place!: string;
   address!: string;
-  start_date!: Date;
-  finish_date!: Date;
+  start_date!: string;
+  finish_date!: string;
 }

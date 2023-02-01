@@ -1,7 +1,12 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
 <section>
   <h1>Eventos</h1>
   <h2>Más recientes</h2>
-  <details *ngFor="let evento of eventos">
+  <details *ngFor="let evento of eventos; index as index">
     <summary>
       <div>
         <span style="background-color: #f2dcbb">
@@ -320,17 +325,59 @@
       <dl>
         <div>
           <dt>Lugar</dt>
-          <p>{{ evento.place }}</p>
+          <editable (update)="updateField(index, 'place')">
+            <ng-template viewMode>{{ evento.place }}</ng-template>
+            <ng-template editMode>
+              <input
+                [formControl]="getControl(index, 'place')"
+                focusable
+                editableOnEnter
+              />
+            </ng-template>
+          </editable>
         </div>
 
         <div>
           <dt>Dirección</dt>
-          <p>{{ evento.address }}</p>
+          <editable (update)="updateField(index, 'address')">
+            <ng-template viewMode>{{ evento.address }}</ng-template>
+            <ng-template editMode>
+              <input
+                [formControl]="getControl(index, 'address')"
+                focusable
+                editableOnEnter
+              />
+            </ng-template>
+          </editable>
         </div>
 
         <div>
           <dt>Fecha Finalización</dt>
-          <p>{{ evento.finish_date }}</p>
+          <editable (update)="updateField(index, 'finish_date')">
+            <ng-template viewMode>{{ evento.finish_date }}</ng-template>
+            <ng-template editMode>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                [formControl]="getControl(index, 'finish_date')"
+                focusable
+                editableOnEnter
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </ng-template>
+          </editable>
+        </div>
+        <div>
+          <a span href= "events/{{evento.id}}"class="material-icons">edit</a>
+        </div>
+        <div>
+          <span (click)="deleteEvent(evento.id)" class="material-icons"
+            >delete</span
+          >
         </div>
       </dl>
     </div>

@@ -13,13 +13,30 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { EventsDetailComponent } from './events-detail/events-detail.component';
+import {MatIconModule} from '@angular/material/icon';
+import { EditableComponent } from './editable/editable.component';
+import { ViewModeDirective } from './editable/view-mode.directive';
+import { EditModeDirective } from './editable/edit-mode.directive';
+import { FocusableDirective } from './focusable.directive';
+import { EditableOnEnterDirective } from './editable/editable-on-enter.directive';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EventsComponent,
-    EventsDetailComponent
+    EventsDetailComponent,
+    EditableComponent,
+    ViewModeDirective,
+    EditModeDirective,
+    FocusableDirective,
+    EditableOnEnterDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +47,13 @@ import { EventsDetailComponent } from './events-detail/events-detail.component';
     ReactiveFormsModule,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     {

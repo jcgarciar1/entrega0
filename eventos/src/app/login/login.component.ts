@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.login(this.f['email'].value, this.f['password'].value).pipe(first()).subscribe(
       data => {
-        this.router.navigate(["home"])
+        this.router.navigate(["events"])
       },
       error => {
         this.error = error;

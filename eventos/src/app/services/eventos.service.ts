@@ -34,4 +34,17 @@ export class EventosService {
   getEvent(id: string): Observable<Evento>{
     return this.http.get(this.api_url + 'api/events/' + id + '/') as Observable<Evento>;
 }
+
+  deleteEvent(id:number): void
+  {
+    this.http.delete(this.api_url + "api/delete-event/" + id + "/").subscribe(data => {
+      console.log(data);});
+
+}
+
+ updateEvent(eventData: Object,id:number) {
+  this.http.post(this.api_url + "api/update-event/" + id + "/", eventData).subscribe(data => {
+    console.log(data);
+  });
+}
 }

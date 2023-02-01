@@ -1,15 +1,56 @@
 import { Component, OnInit } from '@angular/core';
+import { Evento } from '../models/Evento';
+import { EventosService } from '../services/eventos.service';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-events-detail',
   templateUrl: './events-detail.component.html',
-  styleUrls: ['./events-detail.component.css']
+  styleUrls: ['./events-detail.component.css'],
 })
 export class EventsDetailComponent implements OnInit {
-
-  constructor() { }
+  evento!: Evento;
+  id!: string | null;
+  myform!: FormGroup;
+  loading = false;
+  submitted = false;
+  error = '';
+  constructor(
+    private eventService: EventosService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.getDetail();
+    this.myform = new FormGroup({
+      name: new FormControl(''),
+      category: new FormControl(''),
+      place: new FormControl(''),
+      address: new FormControl(''),
+      start_date: new FormControl(''),
+      finish_date: new FormControl('')
+    })
   }
+  get f() {
+    return this.myform.controls;
+  }
+  getDetail() {
+    this.id = this.route.snapshot.paramMap.get('id');
 
+    this.eventService.getEvent(this.id!).subscribe((x) => {
+      this.evento = x;
+    });
+  }
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.myform.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    console.log(this.myform.getRawValue())
+  }
 }

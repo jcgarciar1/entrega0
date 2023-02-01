@@ -172,7 +172,3 @@ def update_event(id):
         print(e)
         status = 'something went wrong'
     return jsonify({'result': status})
-
-
-
-
