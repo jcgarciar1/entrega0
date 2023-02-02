@@ -63,6 +63,7 @@ export class EventsComponent implements OnInit {
           category: new FormControl(entity.category),
           place: new FormControl(entity.place),
           address: new FormControl(entity.address),
+          type: new FormControl(entity.type),
           start_date: new FormControl(entity.start_date),
           finish_date: new FormControl(entity.finish_date),
         });

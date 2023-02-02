@@ -67,6 +67,7 @@ class Event(db.Model):
     category = db.Column(db.String(100))
     place = db.Column(db.String(100))
     address = db.Column(db.String(100))
+    type = db.Column(db.String(100))
     start_date = db.Column(db.Date())
     finish_date = db.Column(db.Date())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -122,7 +123,7 @@ def register():
 @token_required
 def create_event(user):
     json_data = request.json
-    evento = Event(name=json_data["name"], category=json_data["category"], place=json_data["place"], address=json_data["address"], start_date=datetime.strptime(
+    evento = Event(name=json_data["name"], category=json_data["category"], place=json_data["place"], address=json_data["address"], type=json_data["type"], start_date=datetime.strptime(
         json_data["start_date"], '%Y-%m-%d'), finish_date=datetime.strptime(json_data["finish_date"], '%Y-%m-%d'), user_id=user.id)
     try:
         db.session.add(evento)
@@ -151,11 +152,13 @@ def delete_event(id):
 @app.route('/api/events/', methods=['GET'])
 @token_required
 def get_events(user):
+    print(user.id)
     try:
         eventos = Event.query.filter_by(user_id=user.id).all()
         return events_schema.dump(eventos)
     except Exception as e:
         print(e)
+        return jsonify({'result': "El usuario no tiene eventos"})
 
 
 @app.route('/api/events/<id>/', methods=['GET'])
@@ -172,6 +175,7 @@ def update_event(id):
     update_event.category = json_data["category"]
     update_event.place = json_data["place"]
     update_event.address = json_data["address"]
+    update_event.type = json_data["type"]
     update_event.start_date = datetime.strptime(
         json_data["start_date"], '%Y-%m-%d')
     update_event.finish_date = datetime.strptime(

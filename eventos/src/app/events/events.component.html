@@ -404,6 +404,19 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
             </editable>
           </div>
           <div>
+            <dt>Tipo</dt>
+            <editable (update)="updateField(index, 'type')">
+              <ng-template viewMode>{{ evento.type }}</ng-template>
+              <ng-template editMode>
+                <input
+                  [formControl]="getControl(index, 'type')"
+                  focusable
+                  editableOnEnter
+                />
+              </ng-template>
+            </editable>
+          </div>
+          <div>
             <a span href="events/{{ evento.id }}" class="material-icons"
               >edit</a
             >

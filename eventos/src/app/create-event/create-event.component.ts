@@ -20,6 +20,7 @@ export class CreateEventComponent implements OnInit {
       name: new FormControl(''),
       place: new FormControl(''),
       address: new FormControl(''),
+      type: new FormControl(''),
       start_date: new FormControl(''),
       finish_date: new FormControl(''),
     });

@@ -31,6 +31,7 @@ export class EventsDetailComponent implements OnInit {
       category: new FormControl(''),
       place: new FormControl(''),
       address: new FormControl(''),
+      type: new FormControl(''),
       start_date: new FormControl(''),
       finish_date: new FormControl(''),
     });
@@ -51,6 +52,7 @@ export class EventsDetailComponent implements OnInit {
       category: new FormControl(this.evento.category),
       place: new FormControl(this.evento.place),
       address: new FormControl(this.evento.address),
+      type: new FormControl(this.evento.type),
       start_date: new FormControl(this.evento.start_date),
       finish_date: new FormControl(this.evento.finish_date),
     });
