@@ -16,8 +16,8 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit(): void {
     this.myform = new FormGroup({
-      name: new FormControl(''),
       category: new FormControl(''),
+      name: new FormControl(''),
       place: new FormControl(''),
       address: new FormControl(''),
       start_date: new FormControl(''),

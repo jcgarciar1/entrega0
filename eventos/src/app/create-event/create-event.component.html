@@ -1,10 +1,13 @@
-<body style="background-image: url(assets/Bg_3.jpeg)" class="fondo">
+<body style="background-image: url(assets/Bg_4.jpg)" class="fondo">
   <div class="login">
     <form [formGroup]="myform" (ngSubmit)="onSubmit()" class="form">
+      <h1 style="font-family: Garamond, Georgia, serif">Crear Evento</h1>
+      <br />
+      <br />
       <div>
         <mat-form-field appearance="fill">
           <mat-label>Nombre del Evento</mat-label>
-          <input formControlName="name"  matInput />
+          <input formControlName="name" matInput />
         </mat-form-field>
       </div>
       <div>
@@ -53,7 +56,12 @@
         </mat-form-field>
       </div>
       <div style="text-align: center">
-        <button type="submit">Crear</button>
+        <button class="boton" type="submit">Crear</button>
+      </div>
+      <br>
+      <br>
+      <div style="text-align: center">
+        <a href="events">Regresar</a>
       </div>
       <br />
     </form>

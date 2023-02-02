@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   error = '';
+  hide = true;
+
 
   constructor(private authService: AuthService, private router: Router) { }
 

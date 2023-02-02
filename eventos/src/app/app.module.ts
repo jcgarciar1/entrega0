@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { RegisterComponent } from './register/register.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { RegisterComponent } from './register/register.component';
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     {

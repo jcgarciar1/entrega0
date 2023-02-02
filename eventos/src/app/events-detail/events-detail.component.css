@@ -1,3 +1,16 @@
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+.fondo {
+  background-size: 150%;
+}
 .login {
   width: 500px;
   padding: 10% 0 0;
@@ -14,9 +27,9 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.form button {
+.boton {
   outline: 0;
-  background: #6110a5;
+  background: #c47657;
   width: 35%;
   border: 0;
   padding: 15px;
@@ -27,9 +40,9 @@
   border-radius: 25px;
 }
 
-.form button:hover,
+button.boton:hover,
 .form button:active {
-  background: #9356d2;
+  background: #f4c0ac;
 }
 
 .form .registration-form {
@@ -51,5 +64,5 @@ label {
 }
 
 a:hover {
-  color: #9356d2;
+  color: #f4c0ac;
 }

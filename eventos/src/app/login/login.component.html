@@ -1,26 +1,67 @@
-<body style="background-image: url(assets/Bg_3.jpeg)" class="fondo">
-  <div class="login">
-    <form [formGroup]="myform" (ngSubmit)="onSubmit()" class="form">
-      <div>
-        <label for="email"> Ingrese su Correo</label>
-        <input type="text" formControlName="email" placeholder="Usuario" />
-      </div>
-      <div>
-        <label for="password"> Ingrese su Contraseña</label>
-        <input
-          type="password"
-          formControlName="password"
-          placeholder="Contraseña"
-        />
-      </div>
-      <h4 *ngIf="error != ''" style="font-family: Century Gothic">
-        Usuario o contraseña incorrectos
-      </h4>
-      <div style="text-align: center">
-        <button type="submit">Iniciar Sesión</button>
-      </div>
-      <br />
-      <a href="register"> Registrarse</a>
-    </form>
-  </div>
-</body>
+<html>
+  <body style="background-image: url(assets/Bg_4.jpg)" class="fondo">
+    <div class="login">
+      <form [formGroup]="myform" (ngSubmit)="onSubmit()" class="form">
+        <h1 style="font-family: Garamond, Georgia, serif">Iniciar sesión</h1>
+        <br />
+        <br />
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label style="font-family: Garamond, Georgia, serif"
+              >Ingresa tu correo</mat-label
+            >
+            <input
+              formControlName="email"
+              matInput
+              placeholder="pat@example.com"
+              type="email"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label style="font-family: Garamond, Georgia, serif"
+              >Ingresa tu contraseña</mat-label
+            >
+            <input
+              formControlName="password"
+              matInput
+              [type]="hide ? 'password' : 'text'"
+            />
+
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <h4 *ngIf="error != ''">Usuario o contraseña incorrectos</h4>
+        <div style="text-align: center">
+          <br />
+          <br />
+          <button
+            style="font-family: Garamond, Georgia, serif"
+            class="boton"
+            type="submit"
+          >
+            Iniciar Sesión
+          </button>
+        </div>
+        <br />
+        <br />
+        <br />
+
+        <a style="font-family: Garamond, Georgia, serif" href="register">
+          ¿No tienes una cuenta?</a
+        >
+      </form>
+    </div>
+  </body>
+</html>

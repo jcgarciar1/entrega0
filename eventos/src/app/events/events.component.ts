@@ -3,6 +3,7 @@ import { Evento } from '../models/Evento';
 import { EventosService } from '../services/eventos.service';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-events',
@@ -12,8 +13,7 @@ import { DatePipe } from '@angular/common';
 export class EventsComponent implements OnInit {
   eventos: Evento[] = [];
   controls!: FormArray;
-
-  constructor(private eventoService: EventosService) {}
+  constructor(private eventoService: EventosService, private authService:AuthService) {}
 
   ngOnInit(): void {
     this.getEvents();
@@ -21,6 +21,12 @@ export class EventsComponent implements OnInit {
 
   getControl(index: number, field: string): FormControl {
     return this.controls.at(index).get(field) as FormControl;
+  }
+
+  public logout()
+  {
+    this.authService.logout()
+  //this.router.navigate(['login/'])
   }
 
   updateField(index: number, field: string) {
@@ -69,4 +75,6 @@ export class EventsComponent implements OnInit {
     this.eventoService.deleteEvent(id);
     window.location.reload();
   }
+
+
 }
