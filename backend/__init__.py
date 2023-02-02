@@ -152,14 +152,12 @@ def delete_event(id):
 @app.route('/api/events/', methods=['GET'])
 @token_required
 def get_events(user):
-    print(user.id)
     try:
         eventos = Event.query.filter_by(user_id=user.id).all()
         return events_schema.dump(eventos)
     except Exception as e:
         print(e)
         return jsonify({'result': "El usuario no tiene eventos"})
-
 
 @app.route('/api/events/<id>/', methods=['GET'])
 def get_event(id):
